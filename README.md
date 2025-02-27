@@ -29,7 +29,7 @@ Run the application locally and open it on multiple browsers or devices to chat 
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/fastapi-chat-app.git
+git clone https://github.com/abdulbasit-developer/Chatapp.git
 cd fastapi-chat-app
 ```
 
