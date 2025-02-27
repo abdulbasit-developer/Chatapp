@@ -2,7 +2,7 @@
 
 A real-time chat application built with FastAPI and WebSockets that works across multiple devices on the same network.
 
-![Chat App Screenshot](https://via.placeholder.com/800x450.png?text=FastAPI+Chat+App)
+
 
 ## Features
 
