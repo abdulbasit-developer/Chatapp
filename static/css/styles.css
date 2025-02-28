@@ -1,0 +1,193 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: #4267B2;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-id {
+    background-color: white;
+    color: #333;
+    padding: 8px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-top: 5px;
+    font-size: 0.9em;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.chat-container {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.message-list {
+    list-style-type: none;
+    margin-bottom: 70px;
+}
+
+.message {
+    margin-bottom: 10px;
+    max-width: 80%;
+    padding: 10px 15px;
+    border-radius: 18px;
+    position: relative;
+    clear: both;
+    word-wrap: break-word;
+}
+
+.message.own {
+    background-color: #0084ff;
+    color: white;
+    float: right;
+    border-bottom-right-radius: 5px;
+}
+
+.message.other {
+    background-color: #e4e6eb;
+    color: #050505;
+    float: left;
+    border-bottom-left-radius: 5px;
+}
+
+.sender-info {
+    font-size: 0.8em;
+    color: #65676b;
+    margin-bottom: 4px;
+}
+
+.notification {
+    text-align: center;
+    margin: 10px 0;
+    color: #65676b;
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+.input-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.message-controls {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+#messageText {
+    flex: 1;
+    border: none;
+    background-color: #f0f2f5;
+    border-radius: 20px;
+    padding: 12px 15px;
+    font-size: 16px;
+    outline: none;
+}
+
+button {
+    background-color: #4267B2;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button:hover {
+    background-color: #365899;
+}
+
+.file-controls {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.file-input-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.file-input-wrapper input[type=file] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+.file-btn {
+    background-color: #e4e6eb;
+    color: #050505;
+    border-radius: 20px;
+    padding: 8px 15px;
+    display: inline-block;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.selected-file {
+    margin-left: 10px;
+    font-size: 14px;
+    color: #65676b;
+}
+
+.file-attachment {
+    display: block;
+    margin-top: 8px;
+    padding: 8px 12px;
+    background-color: #f0f2f5;
+    border-radius: 10px;
+    font-size: 0.9em;
+    color: #4267B2;
+    text-decoration: none;
+}
+
+.file-attachment:hover {
+    background-color: #e4e6eb;
+    text-decoration: underline;
+}
+
+.file-icon {
+    margin-right: 5px;
+}
+
+.message-content {
+    margin-bottom: 8px;
+}
