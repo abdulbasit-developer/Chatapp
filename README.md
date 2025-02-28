@@ -1,126 +1,108 @@
-# FastAPI WebSocket Chat App
+# FastAPI Chat Application
 
-A real-time chat application built with FastAPI and WebSockets that works across multiple devices on the same network.
-
-
+A real-time chat application built with FastAPI, WebSockets, and vanilla JavaScript that allows users to exchange messages and share files with other connected clients.
 
 ## Features
 
-- Real-time messaging with WebSocket technology
-- Clean, modern UI inspired by popular messaging apps
-- Works across multiple devices on the same network
-- Responsive design that adapts to mobile and desktop
-- User identification with unique client IDs
-- Join/leave notifications
-- Message history displayed during the session
-
-## Demo
-
-Run the application locally and open it on multiple browsers or devices to chat in real-time.
-
-## Installation
-
-### Prerequisites
-
-- Python 3.7+
-- pip (Python package manager)
-
-### Setup
-
-1. Clone the repository
-```bash
-git clone https://github.com/abdulbasit-developer/Chatapp.git
-cd fastapi-chat-app
-```
-
-2. Create a virtual environment (optional but recommended)
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-3. Install the required packages
-```bash
-pip install -r requirements.txt
-```
+- Real-time messaging using WebSockets
+- File sharing functionality
+- Unique user IDs for each client
+- Message broadcasting to all connected clients
+- Modern, responsive UI
+- Support for notifications (user join/leave)
 
 ## Project Structure
 
 ```
-fastapi-chat-app/
-├── main.py              # FastAPI application with embedded HTML/CSS/JS
-└── README.md
+fastapi-chat/
+├── main.py                  # Application entry point
+├── connection_manager.py    # WebSocket connection manager
+├── routes.py                # API routes definition
+├── static/                  # Static files
+│   ├── css/
+│   │   └── styles.css       # CSS styles
+│   ├── js/
+│   │   └── chat.js          # JavaScript code
+│   └── index.html           # HTML template
+└── uploads/                 # Directory for uploaded files
 ```
 
-This app is designed with simplicity in mind - all code (Python, HTML, CSS, and JavaScript) is contained in a single `main.py` file for easy deployment.
+## Installation
 
-## Usage
-
-1. Start the server:
+1. Clone the repository:
 ```bash
-uvicorn main:app --host 0.0.0.0 --port 8000
+git clone <repository-url>
+cd fastapi-chat
 ```
 
-2. Access the chat:
-   - On the same computer: Open `http://localhost:8000` or `http://127.0.0.1:8000` in your browser
-   - From other devices on the same network: Open `http://YOUR_COMPUTER_IP:8000` in a browser
-     (Replace YOUR_COMPUTER_IP with your machine's local IP address, e.g., 192.168.1.5)
+2. Create a virtual environment and activate it:
+```bash
+python -m venv venv
+# For Windows
+venv\Scripts\activate
+# For macOS/Linux
+source venv/bin/activate
+```
 
-3. Start chatting across devices!
+3. Install the required packages:
+```bash
+pip install fastapi uvicorn python-multipart
+```
 
-## How to Find Your Local IP Address
+## Running the Application
 
-### Windows
-1. Open Command Prompt
-2. Type `ipconfig` and press Enter
-3. Look for "IPv4 Address" under your active network adapter
+1. Start the application:
+```bash
+python main.py
+```
+Alternatively, you can use Uvicorn directly:
+```bash
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+```
 
-### macOS
-1. Open Terminal
-2. Type `ifconfig | grep "inet "` and press Enter
-3. Look for your local IP (usually starts with 192.168 or 10.0)
+2. Open your browser and navigate to:
+```
+http://localhost:8000
+```
 
-### Linux
-1. Open Terminal
-2. Type `ip addr` or `hostname -I` and press Enter
-3. Find your local IP address
+## How It Works
 
-## Technical Details
+### Backend Components
 
-This application uses:
-- **FastAPI**: A modern, fast web framework for building APIs
-- **WebSockets**: For real-time, bidirectional communication
-- **HTML/CSS/JavaScript**: For the front-end interface (embedded in the Python file)
+- **main.py**: Initializes the FastAPI application, mounts static file directories, and configures routes.
+- **connection_manager.py**: Manages WebSocket connections, providing methods for connecting, disconnecting, and sending messages.
+- **routes.py**: Defines API endpoints for serving the web interface, handling WebSocket connections, and serving uploaded files.
 
-### How It Works
+### Frontend Components
 
-1. The server creates a WebSocket endpoint for clients
-2. Each client connects with a unique ID (timestamp-based)
-3. Messages are broadcasted to all connected clients
-4. The server maintains a list of active connections
-5. When a client disconnects, a notification is sent to all remaining clients
+- **index.html**: The main HTML template for the chat interface.
+- **styles.css**: CSS styling for the chat interface.
+- **chat.js**: JavaScript code handling WebSocket connections, sending/receiving messages, and file uploads.
+
+## WebSocket Communication
+
+The application uses WebSockets for real-time bidirectional communication:
+
+1. When a user connects, a unique client ID is assigned based on the current timestamp.
+2. Text messages are sent directly over the WebSocket connection.
+3. Files are encoded as base64 and sent as JSON objects containing metadata about the file.
+4. The server processes incoming messages and broadcasts them to other connected clients.
+
+## File Sharing
+
+1. Users can attach files using the "Attach File" button.
+2. Files are uploaded to the server and stored in the `uploads` directory.
+3. The server generates a unique filename to prevent collisions.
+4. Links to uploaded files appear in the chat for both the sender and recipients.
 
 ## Customization
 
-The HTML, CSS, and JavaScript are all defined in the `html` variable in the `main.py` file. To customize the appearance:
+- Change the color scheme by modifying the CSS variables in `styles.css`.
+- Adjust the WebSocket connection logic in `chat.js` if deploying behind a proxy.
+- Modify the file storage location by changing the `uploads` directory path in `main.py`.
 
-1. Modify the CSS section within the `<style>` tags
-2. Change the HTML structure as needed
-3. Update the JavaScript functionality if necessary
+
 
 ## License
 
 [MIT License](LICENSE)
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## Acknowledgements
-
-- [FastAPI](https://fastapi.tiangolo.com/)
-- [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)
