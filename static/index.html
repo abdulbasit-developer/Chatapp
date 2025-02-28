@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>FastAPI Chat</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/css/styles.css">
+    </head>
+    <body>
+        <div class="header">
+            <h1>FastAPI Chat</h1>
+            <div class="user-id">Your ID: <span id="ws-id"></span></div>
+        </div>
+        
+        <div class="chat-container">
+            <ul id="messages" class="message-list"></ul>
+        </div>
+        
+        <div class="input-container">
+            <div class="file-controls">
+                <div class="file-input-wrapper">
+                    <span class="file-btn">Attach File</span>
+                    <input type="file" id="fileInput" />
+                </div>
+                <span id="fileName" class="selected-file"></span>
+            </div>
+            <div class="message-controls">
+                <input type="text" id="messageText" placeholder="Type a message..." autocomplete="off"/>
+                <button id="sendButton" onclick="sendMessage(event)">&#9654;</button>
+            </div>
+        </div>
+        
+        <script src="/static/js/chat.js"></script>
+    </body>
+</html>
